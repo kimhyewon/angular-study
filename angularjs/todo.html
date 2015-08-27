@@ -31,6 +31,11 @@
                 });
                 return count;
             }
+
+            //미완료 항목의 개수를 토대로 부트스트랩 css 클래스명을 반환한다. 
+            $scope.warningLevel = function () {
+                return $scope.incompleteCount() < 3 ? "label-success" : "label-warning";
+            }   
         })
     </script>
 </head>
@@ -38,7 +43,8 @@
     <div class="page-header">
         <h1>
             {{todo.user}}'s To Do List
-            <span class="label label-default" ng-hide="incompleteCount() == 0">
+            <span class="label label-default" ng-class="warningLevel()" 
+                ng-hide="incompleteCount() == 0">
                 {{incompleteCount()}}
             </span>
         </h1>
