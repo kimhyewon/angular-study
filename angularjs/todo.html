@@ -18,9 +18,14 @@
 
         var todoApp = angular.module("todoApp", []); //모듈은 이렇게 angular.module 메소드를 호출해 생성한다. 인자는 생성할 모듈명과 필요한 추가 모듈 배열이다. []:추가 모듈이 필요없음을 앵귤러에 알림 
 
+        //컨트롤러
+        //인자는 새 컨트롤러 명, 컨트롤러의 기능을 정의하기 위해 호출하는 함수. 
+        todoApp.controller("ToDoCtrl", function($scope) {
+            $scope.todo = model;    //뷰에서 전체 모델을 사용.
+        })
     </script>
 </head>
-<body>
+<body ng-controller="ToDoCtrl"> <!--컨트롤러가 책임질 html 문서 영역을 지정  -->
     <div class="page-header">
         <h1>To Do List</h1>
     </div>
