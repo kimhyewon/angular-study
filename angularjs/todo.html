@@ -70,7 +70,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="item in todo.items">
+                <tr ng-repeat="item in todo.items | filter:{done: false} | orderBy:'action'"> <!-- done 속성값이 false인 항목만 선택하게끔 필터를 적용했다. 이렇게 하면 완료된 할 일 항목이 사용자에게 안보이게 된다. 또 action 속성값으로 정렬하게 지정했다. -->
                     <td>{{item.action}}</td>
                     <td><input type="checkbox" ng-model="item.done" /></td>
                 </tr>
