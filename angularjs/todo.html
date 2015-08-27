@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html data-ng-app>
+<html ng-app="todoApp">
 <head>
     <title>TO DO List</title>
     <link href="bootstrap.css" rel="stylesheet" />
     <link href="bootstrap-theme.css" rel="stylesheet" />
+    <script src="angular.js"></script>
+    <script>
+        var todoApp = angular.module("todoApp", []); //모듈은 이렇게 angular.module 메소드를 호출해 생성한다. 인자는 생성할 모듈명과 필요한 추가 모듈 배열이다. []:추가 모듈이 필요없음을 앵귤러에 알림 
+    </script>
 </head>
 <body>
     <div class="page-header">
