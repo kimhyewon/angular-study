@@ -9,14 +9,17 @@
         //데이터 모델 정의 
         //앵귤러 애플리케이션은 브라우저상에 존재하므로 데이터 모델은 sript 내에 자바스크립트를 사용해 정의.
         var model = {
-            user: "Adam",
-            items: [{ action: "Buy Flowers", done: false },
-                        { action: "Get Shoes", done: false },
-                        { action: "Collect Tickets", done: true },
-                        { action: "Call Joe", done: false }]
+            user: "Adam"
         };
 
         var todoApp = angular.module("todoApp", []); //모듈은 이렇게 angular.module 메소드를 호출해 생성한다. 인자는 생성할 모듈명과 필요한 추가 모듈 배열이다. []:추가 모듈이 필요없음을 앵귤러에 알림 
+
+        //json파일에서 items 부분을 받아옴(action, done) 
+        todoApp.run(function ($http) {
+            $http.get("todo.json").success(function (data) { //$http.get를 사용해 todo.json파일에 대한 get요청을 보낸다. 
+               model.items = data;
+            });
+        });
 
         todoApp.filter("checkedItems", function () {
             return function (items, showComplete) {
